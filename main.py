@@ -11,36 +11,13 @@ st.set_page_config(
 
 # --- DB CONNECTION ---
 @st.cache_data(ttl=600)
+import requests
+import pandas as pd
+
+@st.cache_data(ttl=600)
 def load_data():
-    conn = mysql.connector.connect(
-        host=st.secrets["DB_HOST"],
-        user=st.secrets["DB_USER"],
-        password=st.secrets["DB_PASS"],
-        database=st.secrets["DB_NAME"]
-    )
-
-    query = """
-        SELECT
-            MONTH(period_date) AS month,
-            sales,
-            purchases,
-            ROUND(
-                CASE
-                    WHEN sales = 0 THEN 0
-                    ELSE ((sales - purchases) / sales) * 100
-                END,
-                2
-            ) AS profit_percent
-        FROM monthly_finance
-        WHERE user_id = 1
-          AND YEAR(period_date) = 2024
-        ORDER BY period_date
-    """
-
-    df = pd.read_sql(query, conn)
-    conn.close()
-    return df
-
+    url = "https://grafic.prosoftsrl.ro/api/monthly_finance.php?key=CHEIE_SECRETA"
+    return pd.read_json(url)
 
 df = load_data()
 
