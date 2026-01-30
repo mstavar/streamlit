@@ -25,8 +25,8 @@ fig = px.bar(
     barmode='group',
     title="Situație financiară lunară",
     labels={
-        'sales': 'Vânzări',
-        'purchases': 'Achiziții',
+        ['sales': 'Vânzări',
+        'purchases': 'Achiziții'],
         'month': 'Lună'
     }
 )
