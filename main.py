@@ -25,8 +25,8 @@ fig = px.bar(
     barmode='group',
     title="Situație financiară lunară",
     labels={
-        ['sales': 'Vânzări',
-        'purchases': 'Achiziții'],
+        'sales': 'Vânzări',
+        'purchases': 'Achiziții',
         'month': 'Lună'
     }
 )
@@ -34,7 +34,7 @@ fig = px.bar(
 fig.add_scatter(
     x=df['month'],
     y=df['profit_percent'],
-    name='Profit (%)',
+    name='Profit333 (%)',
     yaxis='y2',
     line=dict(color='red', width=3)
 )
