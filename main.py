@@ -20,13 +20,21 @@ def load_data():
     )
 
     query = """
-        SELECT 
-            month AS Month,
-            vanzari AS Vanzari,
-            achizitii AS Achizitii,
-            profit AS Profit
+        SELECT
+            MONTH(period_date) AS month,
+            sales,
+            purchases,
+            ROUND(
+                CASE
+                    WHEN sales = 0 THEN 0
+                    ELSE ((sales - purchases) / sales) * 100
+                END,
+                2
+            ) AS profit_percent
         FROM monthly_finance
-        ORDER BY id
+        WHERE user_id = 1
+          AND YEAR(period_date) = 2024
+        ORDER BY period_date
     """
 
     df = pd.read_sql(query, conn)
