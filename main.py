@@ -12,7 +12,7 @@ st.set_page_config(
 
 @st.cache_data(ttl=600)
 def load_data():
-    url = "https://grafic.prosoftsrl.ro/api/monthly_finance.php?key=CHEIE_SECRETA"
+    url = "https://grafic.prosoftsrl.ro/api/monthly_finance.php?key=abc123XyZ!"
     return pd.read_json(url)
 
 df = load_data()
