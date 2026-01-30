@@ -21,7 +21,8 @@ df = load_data()
 fig = px.bar(
     df,
     x='month',
-    y=['Vanzari', 'Achizitii'],
+    y=['sales', 'purchases'],
+    name=['Vanzari', 'Achizitii'],
     barmode='group',
     title="Situație financiară lunară"
 )
