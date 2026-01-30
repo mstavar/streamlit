@@ -20,7 +20,7 @@ df = load_data()
 # --- PLOT ---
 fig = px.bar(
     df,
-    x='month',
+    x='month', name='Achizitii',
     y=['sales', 'purchases'],
     barmode='group',
     title="Situație financiară lunară"
