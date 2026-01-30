@@ -2,17 +2,13 @@ import streamlit as st
 import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
-import mysql.connector
+import requests
 
 st.set_page_config(
     page_title="Monthly Finance",
     layout="wide"
 )
 
-# --- DB CONNECTION ---
-@st.cache_data(ttl=600)
-import requests
-import pandas as pd
 
 @st.cache_data(ttl=600)
 def load_data():
