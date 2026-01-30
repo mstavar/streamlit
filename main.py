@@ -23,7 +23,12 @@ fig = px.bar(
     x='month',
     y=['sales', 'purchases'],
     barmode='group',
-    title="Situație financiară lunară"
+    title="Situație financiară lunară",
+    labels={
+        'sales': 'Vânzări',
+        'purchases': 'Achiziții',
+        'month': 'Lună'
+    }
 )
 
 fig.add_scatter(
