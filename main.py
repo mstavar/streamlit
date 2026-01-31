@@ -42,7 +42,7 @@ fig.update_layout(
     yaxis2=dict(
         title='Profit (%)',
         overlaying='y',
-        side='righ'
+        side='right'
     ),
     legend_title_text="Indicatori",
     legend=dict(x=1.05, y=1)
