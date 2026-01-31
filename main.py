@@ -9,6 +9,18 @@ st.set_page_config(
     layout="wide"
 )
 
+@st.cache_data(ttl=3600)
+def get_years():
+    url = "https://grafic.prosoftsrl.ro/api/available_years.php"
+    return requests.get(url).json()
+
+years = get_years()
+
+selected_year = st.selectbox(
+    "Selectează anul",
+    years,
+    index=0
+)
 
 @st.cache_data(ttl=600)
 def load_data(year):
