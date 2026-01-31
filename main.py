@@ -1,4 +1,4 @@
-import streamlit as st
+yearimport streamlit as st
 import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
@@ -11,26 +11,31 @@ st.set_page_config(
 
 
 @st.cache_data(ttl=600)
-def load_data():
-    url = "https://grafic.prosoftsrl.ro/api/monthly_finance.php?key=abc123XyZ!"
+def load_data(year):
+    url = f"https://grafic.prosoftsrl.ro/api/monthly_finance.php?key=abc123XyZ!?year={year}"
     return pd.read_json(url)
 
-df = load_data()
+df = load_data(selected_year)
+month_map = {
+    1: "Ian", 2: "Feb", 3: "Mar", 4: "Apr",
+    5: "Mai", 6: "Iun", 7: "Iul", 8: "Aug",
+    9: "Sep", 10: "Oct", 11: "Nov", 12: "Dec"
+}
+
+df["Lună"] = df["month"].map(month_map)
 
 # --- PLOT ---
 fig = px.bar(
     df,
-    x='month', 
-    y=['Vânzări', 'Achiziții'],
-    barmode='group',
-    title="Situație financiară lunară",
-    labels={
-        'month': 'Lună'
-    }
+    x="Lună",
+    y=["Vânzări", "Achiziții"],
+    barmode="group",
+    title=f"Situație financiară lunară – {selected_year}"
 )
 
+
 fig.add_scatter(
-    x=df['month'],
+    x=df["Lună"],
     y=df['profit_percent'],
     name='Profit (%)',
     yaxis='y2',
