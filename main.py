@@ -30,7 +30,7 @@ fig = px.bar(
 )
 
 fig.add_scatter(
-    x=df['month'],name='Profrrit (%)',
+    x=df['month'],
     y=df['profit_percent'],
     name='Profit (%)',
     yaxis='y2',
