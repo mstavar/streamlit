@@ -45,7 +45,13 @@ fig.update_layout(
         side='right'
     ),
     legend_title_text="Indicatori",
-    legend=dict(x=1.05, y=1)
+    legend=dict(
+        orientation="h",
+        yanchor="bottom",
+        y=1.12,
+        xanchor="center",
+        x=0.5
+    )
 )
 
 st.plotly_chart(fig, use_container_width=True)
