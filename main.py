@@ -24,7 +24,7 @@ selected_year = st.selectbox(
 
 @st.cache_data(ttl=600)
 def load_data(year):
-    url = f"https://grafic.prosoftsrl.ro/api/monthly_finance.php?year={year}?key=abc123XyZ!"
+    url = f"https://grafic.prosoftsrl.ro/api/monthly_finance.php?year={year}&key=abc123XyZ!"
     return pd.read_json(url)
 
 df = load_data(selected_year)
