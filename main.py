@@ -20,7 +20,7 @@ df = load_data()
 # --- PLOT ---
 fig = px.bar(
     df,
-    x='month', name='Profrrit (%)',
+    x='month', 
     y=['sales', 'purchases'],
     barmode='group',
     title="Situație financiară lunară",
@@ -30,7 +30,7 @@ fig = px.bar(
 )
 
 fig.add_scatter(
-    x=df['month'],
+    x=df['month'],name='Profrrit (%)',
     y=df['profit_percent'],
     name='Profit (%)',
     yaxis='y2',
